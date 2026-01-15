@@ -1,5 +1,7 @@
 import models.Line;
+import models.LineCanvas;
 import models.Point;
+import rasterizers.LineCanvasRasterizer;
 import rasterizers.Rasterizer;
 import rasterizers.TrivialRasterizer;
 import rasters.Raster;
@@ -7,6 +9,8 @@ import rasters.RasterBufferedImage;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.Serial;
@@ -16,8 +20,12 @@ public class App {
     private final JPanel panel;
     private final Raster raster;
     private MouseAdapter mouseAdapter;
+    private KeyAdapter keyAdapter;
     private Point point;
     private Rasterizer rasterizer;
+    private LineCanvas lineCanvas;
+    private LineCanvasRasterizer lineCanvasRasterizer;
+    private boolean dottedMode = false;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new App(800, 600).start());
@@ -69,9 +77,14 @@ public class App {
         createAdapters();
         panel.addMouseMotionListener(mouseAdapter);
         panel.addMouseListener(mouseAdapter);
+        panel.addKeyListener(keyAdapter);
 
         panel.requestFocus();
         panel.requestFocusInWindow();
+
+        lineCanvas = new LineCanvas();
+        // TODO create dotted rasterizer
+        lineCanvasRasterizer = new LineCanvasRasterizer(rasterizer, rasterizer);
     }
 
 
@@ -79,16 +92,26 @@ public class App {
         mouseAdapter = new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
+                Point point2 = new Point(e.getX(), e.getY());
+                Line line = new Line(point, point2, dottedMode);
 
+                raster.clear();
+
+                lineCanvasRasterizer.rasterizeCanvas(lineCanvas);
+                rasterizer.rasterize(line);
+
+                panel.repaint();
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 Point point2 = new Point(e.getX(), e.getY());
-                Line line = new Line(point, point2);
+                Line line = new Line(point, point2, dottedMode);
 
-                rasterizer.rasterize(line);
+                lineCanvas.addLine(line);
 
+                raster.clear();
+                lineCanvasRasterizer.rasterizeCanvas(lineCanvas);
                 panel.repaint();
             }
 
@@ -97,6 +120,22 @@ public class App {
                 point = new Point(e.getX(), e.getY());
 
                 System.out.println(point);
+            }
+        };
+
+        keyAdapter = new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
+                    dottedMode = true;
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
+                    dottedMode = false;
+                }
             }
         };
     }

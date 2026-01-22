@@ -11,3 +11,5 @@ implementovat tečkované čáry pokud je stisknuta klávesa Control
  - pro náhled
 
 po stisknutí klávesy C se vše smaže
+
+Pokud je stisknuta klávesa Shift, pak se čára vykreslí zarovnaná (vodorovná/svislá/45°/-45°)

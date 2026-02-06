@@ -20,3 +20,57 @@ polygon se vyhreslí po zadání minimálně 3 bodů.
 
 pro polygon platí veškeré předešlé podmínky. (tečkované čáry - CTRL, zarovnání - Shift)
 
+--- 
+
+# Zadání kompletní
+
+# Projekt
+
+Tento projekt se zaměřuje na vytvoření aplikace pro kreslení základních geometrických prvků s důrazem na vlastní implementaci algoritmů.
+
+> **Důležité upozornění:** Všechny implementované algoritmy musí být součástí vašeho zdrojového kódu. Není povoleno využívat knihovny třetích stran pro logiku vykreslování!
+
+> Pokud vámi vybraná technologie neumožňuje splnit jakýkoliv z bodů zadání, prosím o konzultaci zda je daná technologie vhodná pro tento projekt.
+
+---
+
+## Cíl projektu
+Cílem projektu je vytvořit jednoduchý kreslící program podobný aplikaci Malování ve Windows, ale s jednodušší funkcionalitou. Program bude umožňovat kreslení základních tvarů, jejich následnou úpravu a mazání.
+
+---
+
+## Funkce aplikace
+
+### 1. Kreslení čar
+- [ ] **Parametry:** Volba barvy, tloušťky a stylu čáry.
+- [ ] **Styly:** Plná, přerušovaná, tečkovaná.
+
+### 2. Základní tvary
+Možnost vykreslování následujících objektů:
+- [ ] Kružnice
+- [ ] Čtverec
+- [ ] Obdélník
+- [ ] Libovolný polygon
+
+### 3. Úpravy tvarů
+- [ ] **Změna rozměrů:** Úprava velikosti a tvaru tažením myší.
+- [ ] **Manipulace:** Přesouvání objektů po ploše plátna.
+
+### 4. Další nástroje
+- [ ] **Guma:** Nástroj pro mazání obsahu.
+- [ ] **Výplň:** Možnost vyplnění uzavřených objektů a oblastí barvou.
+- [ ] **Delete:** Vymazání celého plátna.
+
+### 5. Uživatelské rozhraní (UI)
+- [ ] Barevná paleta pro výběr odstínů.
+- [ ] Ovládací prvky pro nastavení tloušťky a typu čáry.
+- [ ] Přehledné menu pro výběr nástrojů a tvarů.
+
+---
+
+## Očekávané výstupy
+* **Aplikace:** Plně funkční program splňující výše uvedené body.
+* **Zdrojový kód:** Komentovaný kód bez závislostí na externích grafických knihovnách.
+* **Dokumentace:** Stručný technický popis a uživatelský návod k použití.
+
+### Jakákoliv rozšiřující funkčnost je vítána.
